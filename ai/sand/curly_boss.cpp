@@ -3,9 +3,9 @@
 #include "curly_boss.fdh"
 
 #define CURLYB_FIGHT_START		10
-#define CURLYB_WAIT				11
+#define CURLYB_WAIT			11
 #define CURLYB_WALK_PLAYER		13
-#define CURLYB_WALKING_PLAYER	14
+#define CURLYB_WALKING_PLAYER           14
 #define CURLYB_CHARGE_GUN		20
 #define CURLYB_FIRE_GUN			21
 #define CURLYB_SHIELD			30
@@ -32,7 +32,7 @@ void ai_curly_boss(Object *o)
 			o->frame = 0;
 			if (o->x > player->x) o->dir = LEFT; else o->dir = RIGHT;
 			o->flags |= FLAG_SHOOTABLE;
-			o->flags &= ~FLAG_INVULNERABLE;
+			//o->flags &= ~FLAG_INVULNERABLE;
 		}
 		case CURLYB_WAIT:
 			if (o->timer) o->timer--;
@@ -120,7 +120,7 @@ void ai_curly_boss(Object *o)
 	{
 		// curly activates her shield anytime a missile's explosion goes off,
 		// even if it's nowhere near her at all
-		if (sound_is_playing(SND_MISSILE_HIT))
+		if (false)
 		{
 			o->timer = 0;
 			o->state = CURLYB_SHIELD;
